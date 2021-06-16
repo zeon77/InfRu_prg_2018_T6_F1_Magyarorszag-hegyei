@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Globalization;
 
 namespace HegyekMo
 {
@@ -35,8 +36,8 @@ namespace HegyekMo
             Console.WriteLine($"\t{(hegyek.Any(x => x.Magasság > magasság && x.Hegység == "Börzsöny") ? "Van" : "Nincs")} {magasság}m-nél magasabb hegycsúcs a Börzsönyben!");
 
             //7.
-            const double MetersToFeet = 3.280839895;
-            Console.WriteLine($"7. feladat: 3000 lábnál magasabb hegycsúcsok száma: {hegyek.Where(x => x.Magasság * MetersToFeet > 3000).Count()}");
+            
+            Console.WriteLine($"7. feladat: 3000 lábnál magasabb hegycsúcsok száma: {hegyek.Where(x => x.MagasságLáb > 3000).Count()}");
 
             //8. feladat
             Console.WriteLine($"8. feladat: Hegység statisztika");
@@ -44,6 +45,18 @@ namespace HegyekMo
                 .Select(gr => new { Hegység = gr.Key, Darab = gr.Count() })
                 .ToList().ForEach(x => Console.WriteLine($"\t {x.Hegység} - {x.Darab} db"));
 
+            //9. feladat
+            Console.WriteLine($"9. feladat: bukk-videk.txt");
+
+            using StreamWriter sw = new StreamWriter("bukk-videk.txt");
+            // A decimal separator megváltoztatásához...
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+
+            sw.WriteLine("Hegycsúcs neve;Magasság láb");
+            hegyek.Where(x => x.Hegység == "Bükk-vidék")
+                //.ToList().ForEach(x => sw.WriteLine($"{x.Név};" + $"{(x.MagasságLáb):0.0}".Replace(",", ".").Replace(".0", "")));     //csúnya
+                .ToList().ForEach(x => sw.WriteLine($"{x.Név};{(x.MagasságLáb).ToString("0.#", nfi)}"));
         }
     }
 }
