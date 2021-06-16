@@ -38,6 +38,12 @@ namespace HegyekMo
             const double MetersToFeet = 3.280839895;
             Console.WriteLine($"7. feladat: 3000 lábnál magasabb hegycsúcsok száma: {hegyek.Where(x => x.Magasság * MetersToFeet > 3000).Count()}");
 
+            //8. feladat
+            Console.WriteLine($"8. feladat: Hegység statisztika");
+            hegyek.GroupBy(x => x.Hegység)
+                .Select(gr => new { Hegység = gr.Key, Darab = gr.Count() })
+                .ToList().ForEach(x => Console.WriteLine($"\t {x.Hegység} - {x.Darab} db"));
+
         }
     }
 }
