@@ -20,6 +20,15 @@ namespace HegyekMo
             //4. feladat
             Console.WriteLine($"4. feladat: Hegycsúcsok átlagos magassága: {hegyek.Average(x => x.Magasság):0.00} m");
 
+            //5. feladat
+            Console.WriteLine($"5. feladat: A legmagasabb hegycsúcs adatai:");
+            //int maxMagasság = hegyek.Max(y => y.Magasság);
+            //var legmagasabbHegy = hegyek.Single(x => x.Magasság == maxMagasság);
+            var legmagasabbHegy = hegyek.OrderBy(x => x.Magasság).Last();
+            Console.WriteLine($"\t Név: {legmagasabbHegy.Név}");
+            Console.WriteLine($"\t Hegység: {legmagasabbHegy.Hegység}");
+            Console.WriteLine($"\t Magasság: {legmagasabbHegy.Magasság} m");
+
         }
     }
 }
