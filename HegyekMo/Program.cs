@@ -29,6 +29,11 @@ namespace HegyekMo
             Console.WriteLine($"\t Hegység: {legmagasabbHegy.Hegység}");
             Console.WriteLine($"\t Magasság: {legmagasabbHegy.Magasság} m");
 
+            //6. feladat
+            Console.Write($"6. feladat: Kérek egy magasságot: ");
+            int magasság = int.Parse(Console.ReadLine());
+            Console.WriteLine($"\t{(hegyek.Any(x => x.Magasság > magasság && x.Hegység == "Börzsöny") ? "Van" : "Nincs")} {magasság}m-nél magasabb hegycsúcs a Börzsönyben!");
+
         }
     }
 }
