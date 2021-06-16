@@ -36,7 +36,6 @@ namespace HegyekMo
             Console.WriteLine($"\t{(hegyek.Any(x => x.Magasság > magasság && x.Hegység == "Börzsöny") ? "Van" : "Nincs")} {magasság}m-nél magasabb hegycsúcs a Börzsönyben!");
 
             //7.
-            
             Console.WriteLine($"7. feladat: 3000 lábnál magasabb hegycsúcsok száma: {hegyek.Where(x => x.MagasságLáb > 3000).Count()}");
 
             //8. feladat
