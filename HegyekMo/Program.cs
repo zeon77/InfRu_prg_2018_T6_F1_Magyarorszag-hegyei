@@ -16,6 +16,10 @@ namespace HegyekMo
 
             //3. feladat
             Console.WriteLine($"3. feladat: Hegycsúcsok száma: {hegyek.Count} db");
+
+            //4. feladat
+            Console.WriteLine($"4. feladat: Hegycsúcsok átlagos magassága: {hegyek.Average(x => x.Magasság):0.00} m");
+
         }
     }
 }
